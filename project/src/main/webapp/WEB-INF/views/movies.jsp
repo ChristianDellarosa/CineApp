@@ -4,7 +4,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <html>
 <head>
-    <spring:url value="/resources" var="resourcesURL"/>
+    <spring:url value="/resources" var="resourcesPath"/>
 
     <title>Bienvenido a Cine APP</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -39,7 +39,7 @@
                     <td>${pelicula.duracion}</td>
                     <td>${pelicula.clasificacion}</td>
                     <td>${pelicula.genero}</td>
-                    <td><img src="${resourcesURL}/images/movies/${pelicula.imagen}" width="80" height="100"></td>
+                    <td><img src="${resourcesPath}/images/movies/${pelicula.imagen}" width="80" height="100"></td>
                     <td><fmt:formatDate value="${pelicula.fechaEstreno}" pattern="dd-MM-yyyy"/></td>
                     <td>
                         <c:choose>

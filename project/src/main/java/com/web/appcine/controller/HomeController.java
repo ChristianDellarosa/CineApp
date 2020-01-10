@@ -30,7 +30,7 @@ public class HomeController {
         return "detail";
     }
 
-    @RequestMapping(value="/peliculas", method = RequestMethod.GET)
+    @RequestMapping(value="/movies", method = RequestMethod.GET)
     public String mostrarPeliculas(Model model) {
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
         List<Pelicula> peliculas = new LinkedList<>();
