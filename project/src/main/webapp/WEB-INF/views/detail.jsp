@@ -6,8 +6,8 @@
     <title>Detalle de la pelicula</title>
 </head>
 <body>
-    <h1>Titulo Pelicula: ${titulo}</h1>
-    <h2>Duracion: ${duracion}</h2>
-    <h3>Precio: $${precio}</h3>
+    <h1>Titulo Pelicula: ${peliculas.get(id).titulo}</h1>
+    <h2>Duracion: ${peliculas.get(id).duracion}</h2>
+    <h3>Genero: ${peliculas.get(id).genero}</h3>
 </body>
 </html>
