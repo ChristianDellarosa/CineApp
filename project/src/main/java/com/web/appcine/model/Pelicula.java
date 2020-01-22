@@ -12,9 +12,6 @@ public class Pelicula {
     private Date fechaEstreno;
     private boolean status = true;
 
-    public Pelicula() {
-    }
-
     public Pelicula(int id,String titulo, int duracion, String clasificacion, String genero, Date fechaEstreno, String imagen,boolean status) {
         this.id = id;
         this.titulo = titulo;
@@ -39,6 +36,7 @@ public class Pelicula {
     }
 
     public void setTitulo(String titulo) {
+        System.out.println("Seteo el titulo de la pelicula");
         this.titulo = titulo;
     }
 
