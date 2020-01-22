@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 public class NoticiasService implements INoticiasService {
 
     public NoticiasService() {
-        System.out.println("Creando una instancia de la clase NoticiasServiceImpl");
+        System.out.println("Creando una instancia de la clase NoticiasService");
     }
 
     @Override
