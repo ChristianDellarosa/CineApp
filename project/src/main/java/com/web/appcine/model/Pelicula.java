@@ -8,7 +8,7 @@ public class Pelicula {
     private int duracion;
     private String clasificacion;
     private String genero;
-    private String imagen = ""; /*default*/
+    private String imagen;
     private Date fechaEstreno;
     private boolean status = true;
 
