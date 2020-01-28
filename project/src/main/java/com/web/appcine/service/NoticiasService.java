@@ -12,6 +12,7 @@ public class NoticiasService implements INoticiasService {
 
     @Override
     public void save(Noticia noticia) {
+
         System.out.println("Guadando el objeto " + noticia + " en la base de datos.");
         /*Logica para guardar noticia*/
     }
