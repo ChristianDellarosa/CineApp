@@ -7,4 +7,5 @@ public interface IPeliculasService {
 
     List<Pelicula> searchAll();
     Pelicula searchById(int idPelicula);
+    void insert(Pelicula pelicula);
 }

@@ -18,10 +18,10 @@ public class PeliculasService implements IPeliculasService {
        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
        peliculas = new LinkedList<>();
        try {
-           peliculas.add(new Pelicula(0,"Power Rangers",120,"B","Aventura",formatter.parse("02-05-2017"),"PowerRangers.jpg",true));
-           peliculas.add(new Pelicula(1,"Cars 2",150,"A","Suspenso",formatter.parse("20-05-2017"),"Cars2.jpg",true));
-           peliculas.add(new Pelicula(2,"Contratiempo",80,"C","Accion",formatter.parse("28-05-2017"),"Contratiempo.jpg",false));
-           peliculas.add(new Pelicula(3,"TheWitcher",80,"A","Aventura",formatter.parse("28-05-2019"),"theWitcher.jpg",true));
+           peliculas.add(new Pelicula(0,"Power Rangers",120,"B","Aventura",formatter.parse("02-05-2017"),"PowerRangers.jpg","Activa"));
+           peliculas.add(new Pelicula(1,"Cars 2",150,"A","Suspenso",formatter.parse("20-05-2017"),"Cars2.jpg","Inactiva"));
+           peliculas.add(new Pelicula(2,"Contratiempo",80,"C","Accion",formatter.parse("28-05-2017"),"Contratiempo.jpg","Activa"));
+           peliculas.add(new Pelicula(3,"TheWitcher",80,"A","Aventura",formatter.parse("28-05-2019"),"theWitcher.jpg","Activa"));
        } catch (ParseException e) {
            e.printStackTrace();
        }
@@ -40,5 +40,10 @@ public class PeliculasService implements IPeliculasService {
             }
         }
         return null;
+    }
+
+    @Override
+    public void insert(Pelicula pelicula) {
+       peliculas.add(pelicula);
     }
 }
