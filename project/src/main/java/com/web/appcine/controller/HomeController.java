@@ -33,12 +33,6 @@ public class HomeController {
         return "detail";
     }
 
-    @GetMapping(value="/movies")
-    public String mostrarPeliculas(Model model) {
-        model.addAttribute("peliculas", peliculasService.searchAll());
-        return "movies";
-    }
-
     @PostMapping(value = "/search")
     public String buscarFecha(@RequestParam("fecha") String fecha, Model model) {
         System.out.println("Fecha: "+fecha);
