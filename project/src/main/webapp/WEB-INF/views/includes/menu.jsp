@@ -1,3 +1,7 @@
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<spring:url value="/peliculas/index" var="peliculasIndex"/>
+<spring:url value="/" var="root"/>
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
@@ -7,11 +11,12 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">My CineSite</a>
+            <a class="navbar-brand" href=${root}>Cine APP</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li><a href="#">Acerca</a></li>
+                <li><a href="${peliculasIndex}">Peliculas</a></li>
                 <li><a href="#">Login</a></li>
             </ul>
         </div>
