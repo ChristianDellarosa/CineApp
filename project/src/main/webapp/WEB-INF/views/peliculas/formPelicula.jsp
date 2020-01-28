@@ -1,4 +1,6 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,12 +19,23 @@
 
 <body>
     <jsp:include page="../includes/menu.jsp"></jsp:include>
-<div class="container theme-showcase" role="main">
+    <div class="container theme-showcase" role="main">
 
     <div class="page-header">
         <h3 class="blog-title"><span class="label label-success">Datos de la Pelicula</span></h3>
     </div>
 
+    <spring:hasBindErrors name="pelicula">
+        <div class='alert alert-danger' role='alert'>
+            Por favor corrija los siguientes errores:
+            <ul>
+                <c:forEach var="error" items="${errors.allErrors}">
+                    <li><spring:message message="${error}" /></li>
+                </c:forEach>
+            </ul>
+        </div>
+    </spring:hasBindErrors>
+    
     <form action="${urlForm}" method="post" >
         <div class="row">
             <div class="col-sm-3">
