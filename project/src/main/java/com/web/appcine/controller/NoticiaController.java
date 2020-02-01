@@ -1,14 +1,12 @@
 package com.web.appcine.controller;
 
 import com.web.appcine.model.Noticia;
-import com.web.appcine.service.INoticiasService;
-import com.web.appcine.service.NoticiasService;
+import com.web.appcine.services.interfaces.INoticiasService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/noticias")

@@ -1,5 +1,10 @@
 package com.web.appcine.helpers;
 
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -31,6 +36,20 @@ import java.util.List;
                 nextDays.add(sdf.format(d));
             }
             return nextDays;
+        }
+
+        public static String saveImage(MultipartFile multipartFile, HttpServletRequest request) {
+            String nombreOriginal = multipartFile.getOriginalFilename().replace(" ", "-");
+            String rutaFinal = request.getServletContext().getRealPath("/resources/images/movies/");
+            System.out.println(rutaFinal);
+            try {
+                File imageFile = new File(rutaFinal + nombreOriginal);
+                multipartFile.transferTo(imageFile);
+                return nombreOriginal;
+            } catch (IOException e) {
+                System.out.println("Error " + e.getMessage());
+                return null;
+            }
         }
     }
 

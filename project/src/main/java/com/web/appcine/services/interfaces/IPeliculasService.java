@@ -1,4 +1,4 @@
-package com.web.appcine.service;
+package com.web.appcine.services.interfaces;
 
 import com.web.appcine.model.Pelicula;
 import java.util.List;

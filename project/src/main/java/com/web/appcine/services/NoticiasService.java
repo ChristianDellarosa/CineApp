@@ -1,6 +1,7 @@
-package com.web.appcine.service;
+package com.web.appcine.services;
 
 import com.web.appcine.model.Noticia;
+import com.web.appcine.services.interfaces.INoticiasService;
 import org.springframework.stereotype.Service;
 
 @Service
