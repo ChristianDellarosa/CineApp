@@ -1,7 +1,8 @@
 package com.web.appcine.controller;
 
 import com.web.appcine.helpers.Utils;
-import com.web.appcine.service.IPeliculasService;
+import com.web.appcine.services.interfaces.IBannerService;
+import com.web.appcine.services.interfaces.IPeliculasService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,12 +16,16 @@ public class HomeController {
     private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
     @Autowired
     private IPeliculasService peliculasService;
+    @Autowired
+    private IBannerService bannerService;
 
     @GetMapping(value = "/")
     public String home(Model model) {
         model.addAttribute("fechas", Utils.getNextDays(6));
         model.addAttribute("peliculas", peliculasService.searchAll());
         model.addAttribute("fechaBusqueda",simpleDateFormat.format(new Date()));
+        model.addAttribute("banners",bannerService.searchAll());
+
         return "index";
     }
 

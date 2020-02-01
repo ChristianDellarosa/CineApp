@@ -1,8 +1,8 @@
-package com.web.appcine.service;
+package com.web.appcine.services;
 
 import com.web.appcine.model.Pelicula;
+import com.web.appcine.services.interfaces.IPeliculasService;
 import org.springframework.stereotype.Service;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.LinkedList;

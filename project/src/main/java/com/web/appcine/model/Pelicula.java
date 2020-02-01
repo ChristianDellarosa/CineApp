@@ -39,7 +39,6 @@ public class Pelicula {
     }
 
     public void setTitulo(String titulo) {
-        System.out.println("Seteo el titulo de la pelicula");
         this.titulo = titulo;
     }
 
