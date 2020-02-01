@@ -3,19 +3,19 @@ package com.web.appcine.model;
 import java.util.Date;
 
 public class Pelicula {
-    private int id;
+    private static int id;
     private String titulo;
     private int duracion;
     private String clasificacion;
     private String genero;
     private String imagen;
     private Date fechaEstreno;
-    private boolean status = true;
+    private String status;
 
     public Pelicula() {
     }
 
-    public Pelicula(int id,String titulo, int duracion, String clasificacion, String genero, Date fechaEstreno, String imagen,boolean status) {
+    public Pelicula(int id,String titulo, int duracion, String clasificacion, String genero, Date fechaEstreno, String imagen,String status) {
         this.id = id;
         this.titulo = titulo;
         this.duracion = duracion;
@@ -39,6 +39,7 @@ public class Pelicula {
     }
 
     public void setTitulo(String titulo) {
+        System.out.println("Seteo el titulo de la pelicula");
         this.titulo = titulo;
     }
 
@@ -82,12 +83,12 @@ public class Pelicula {
         this.fechaEstreno = fechaEstreno;
     }
 
-    public boolean isStatus() {
-        return status;
+    public void setStatus(String status) {
+     this.status = status;
     }
 
-    public void setStatus(boolean status) {
-        this.status = status;
+    public String getStatus() {
+        return status;
     }
 
     @Override

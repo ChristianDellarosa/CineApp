@@ -35,7 +35,7 @@
             </div>
             <div class="col-sm-3">
                 <div class="form-group">
-                    <label for="status">Estatus</label>
+                    <label for="status">Status</label>
                     <select id="status" name="status" class="form-control">
                         <option value="Activa">Activa</option>
                         <option value="Inactiva">Inactiva</option>

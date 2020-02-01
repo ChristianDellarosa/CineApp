@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/noticias")
-public class NoticiasController {
+public class NoticiaController {
 
     @Autowired
     private INoticiasService noticiasService;
@@ -23,8 +23,8 @@ public class NoticiasController {
     }
 
     @PostMapping("/save")
-    public String guardarNoticia(@RequestParam("titulo") String titulo, @RequestParam("status") String status, @RequestParam("detalle") String detalle) {
-        noticiasService.save(new Noticia(titulo,detalle,status));
+    public String guardarNoticia(Noticia noticia) {
+            noticiasService.save(noticia);
         return"noticias/formNoticia";
     }
 }
