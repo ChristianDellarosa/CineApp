@@ -3,7 +3,7 @@ package com.web.appcine.model;
 import java.util.Date;
 
 public class Pelicula {
-    private static int id;
+    private int id;
     private String titulo;
     private int duracion;
     private String clasificacion;
@@ -11,6 +11,7 @@ public class Pelicula {
     private String imagen;
     private Date fechaEstreno;
     private String status;
+    private DetallePelicula detalle;
 
     public Pelicula() {
     }
@@ -90,16 +91,25 @@ public class Pelicula {
         return status;
     }
 
+    public DetallePelicula getDetalle() {
+        return detalle;
+    }
+
+    public void setDetalle(DetallePelicula detalle) {
+        this.detalle = detalle;
+    }
+
     @Override
     public String toString() {
         return "Pelicula{" +
-                "id=" + id +
+                "titulo='" + titulo + '\'' +
                 ", duracion=" + duracion +
                 ", clasificacion='" + clasificacion + '\'' +
                 ", genero='" + genero + '\'' +
                 ", imagen='" + imagen + '\'' +
                 ", fechaEstreno=" + fechaEstreno +
-                ", status=" + status +
+                ", status='" + status + '\'' +
+                ", detalle=" + detalle +
                 '}';
     }
 }
