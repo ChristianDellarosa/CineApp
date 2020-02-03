@@ -8,10 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.text.SimpleDateFormat;
@@ -26,12 +23,12 @@ public class PeliculaController {
     private IPeliculasService peliculasService;
 
     @GetMapping("/create")
-    public String create() {
+    public String create(@ModelAttribute("pelicula") Pelicula pelicula) {
         return "peliculas/formPelicula";
     }
 
     @PostMapping("/save")
-    public String save(Pelicula pelicula, BindingResult result, RedirectAttributes redirectAttributes) {
+    public String save(@ModelAttribute("pelicula") Pelicula pelicula, BindingResult result, RedirectAttributes redirectAttributes) {
         if(result.hasErrors()) {
             System.out.println("Existieron Errores");
             return "peliculas/formPelicula";
