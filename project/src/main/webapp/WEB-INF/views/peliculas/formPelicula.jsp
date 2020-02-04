@@ -41,6 +41,7 @@
         <div class="row">
             <div class="col-sm-3">
                 <div class="form-group">
+                    <form:hidden path="id"/>
                     <label for="titulo">T&iacute;tulo</label>
                     <form:input type="text" class="form-control" path="titulo" id="titulo" required="required" />
                 </div>
@@ -54,13 +55,13 @@
             <div class="col-sm-3">
                 <div class="form-group">
                     <label for="clasificacion" class="control-label">Clasificacion</label>
-                    <form:select id="clasificacion" path="clasificacion" class="form-control" items="${categorias}"></form:select>
+                    <form:select id="clasificacion" path="clasificacion" class="form-control" items="${categorias}"/>
                 </div>
             </div>
             <div class="col-sm-3">
                 <div class="form-group">
                     <label for="genero" class="control-label">Genero</label>
-                    <form:select id="genero" path="genero" class="form-control" items="${generos}"></form:select>
+                    <form:select id="genero" path="genero" class="form-control" items="${generos}"/>
                 </div>
             </div>
         </div>
