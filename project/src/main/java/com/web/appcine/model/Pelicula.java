@@ -3,6 +3,7 @@ package com.web.appcine.model;
 import java.util.Date;
 
 public class Pelicula {
+    private static int cont;
     private int id;
     private String titulo;
     private int duracion;
@@ -14,10 +15,13 @@ public class Pelicula {
     private DetallePelicula detalle;
 
     public Pelicula() {
+        cont++;
+        this.id = cont;
     }
 
-    public Pelicula(int id,String titulo, int duracion, String clasificacion, String genero, Date fechaEstreno, String imagen,String status) {
-        this.id = id;
+    public Pelicula(String titulo, int duracion, String clasificacion, String genero, Date fechaEstreno, String imagen,String status) {
+        cont++;
+        this.id = cont;
         this.titulo = titulo;
         this.duracion = duracion;
         this.clasificacion = clasificacion;
