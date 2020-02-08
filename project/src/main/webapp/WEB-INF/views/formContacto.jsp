@@ -1,7 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-<%@ taglib prefix="input" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="input" %>
+<%@taglib  uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,7 +26,11 @@
 
     <h3 class="blog-title text-center"><span class="label label-success">Contacto</span></h3><br>
 
-    <form:form class="form-horizontal" modelAttribute="contacto" method="post" action="${urlRoot}contacto">
+    <c:if test="${msg!=null}">
+        <div class="alert alert-success" role="alert"> ${msg}</div>
+    </c:if>
+
+    <form:form class="form-horizontal" modelAttribute="contacto" method="post" action="${urlRoot}contactos/save">
         <div class="form-group">
             <label for="nombre" class="col-sm-2 control-label">Nombre</label>
             <div class="col-sm-10">
