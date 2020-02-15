@@ -19,14 +19,14 @@
 
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-        <property name="url" value="jdbc:mysql://localhost:3306/cineapp?useSSL=false" />
+        <property name="url" value="jdbc:mysql://localhost:3306/cineapp?useSSL=false&amp;serverTimezone=UTC" />
         <property name="username" value="root" />
-        <property name="password" value="admin" />
+        <property name="password" value="asd123" />
     </bean>
     
     <bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
         <property name="generateDdl" value="false" />
-        <property name="showSql" value="true"></property>
+        <property name="showSql" value="true"/>
         <property name="databasePlatform" value="org.hibernate.dialect.MySQL5Dialect" />
     </bean>
 
