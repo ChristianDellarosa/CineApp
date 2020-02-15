@@ -1,10 +1,16 @@
 package com.web.appcine.model;
 
+import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
+@Entity
+@Table(name = "Peliculas")
 public class Pelicula {
-    private static int cont;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     private String titulo;
     private int duracion;
     private String clasificacion;
@@ -12,16 +18,18 @@ public class Pelicula {
     private String imagen;
     private Date fechaEstreno;
     private String status;
+    @OneToOne
+    @JoinColumn(name = "idDetalle")
     private DetallePelicula detalle;
 
+    @OneToMany(mappedBy = "pelicula",fetch = FetchType.EAGER)
+    private List<Horario> horarios;
+
     public Pelicula() {
-        cont++;
-        this.id = cont;
     }
 
-    public Pelicula(String titulo, int duracion, String clasificacion, String genero, Date fechaEstreno, String imagen,String status) {
-        cont++;
-        this.id = cont;
+    public Pelicula(int id, String titulo, int duracion, String clasificacion, String genero, Date fechaEstreno, String imagen,String status) {
+        this.id = id;
         this.titulo = titulo;
         this.duracion = duracion;
         this.clasificacion = clasificacion;
@@ -102,6 +110,15 @@ public class Pelicula {
     public void setDetalle(DetallePelicula detalle) {
         this.detalle = detalle;
     }
+
+    public List<Horario> getHorarios() {
+        return horarios;
+    }
+
+    public void setHorarios(List<Horario> horarios) {
+        this.horarios = horarios;
+    }
+
 
     @Override
     public String toString() {
