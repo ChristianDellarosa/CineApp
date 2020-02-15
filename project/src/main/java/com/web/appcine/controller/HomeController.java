@@ -30,7 +30,7 @@ public class HomeController {
     }
 
     @GetMapping(value = "/detail/{id}")
-    public String detallePelicula(@PathVariable("id") int idPelicula, @RequestParam(value = "fecha") String fecha, Model model) {
+    public String detallePelicula(@PathVariable("id") int idPelicula, @RequestParam("fecha") String fecha, Model model) {
         System.out.println("IdPelicula: "+ idPelicula);
         System.out.println("Fecha: "+ fecha);
 

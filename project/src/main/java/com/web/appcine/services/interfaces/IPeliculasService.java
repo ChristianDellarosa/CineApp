@@ -8,4 +8,6 @@ public interface IPeliculasService {
     List<Pelicula> searchAll();
     Pelicula searchById(int idPelicula);
     void insert(Pelicula pelicula);
+    List<String> searchGenders();
+    List<String> searchCategories();
 }
