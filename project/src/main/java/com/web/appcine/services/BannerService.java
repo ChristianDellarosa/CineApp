@@ -15,7 +15,7 @@ public class BannerService implements IBannerService {
     private List<Banner> banners;
 
     public BannerService() {
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+       SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
         banners = new LinkedList<>();
         try {
             banners.add(new Banner(1,"Banner1",formatter.parse("20-06-2020"),"slide6.jpg","Activo"));

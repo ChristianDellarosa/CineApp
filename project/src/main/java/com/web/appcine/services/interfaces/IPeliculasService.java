@@ -10,4 +10,5 @@ public interface IPeliculasService {
     void insert(Pelicula pelicula);
     List<String> searchGenders();
     List<String> searchCategories();
+    void delete(int idPelicula);
 }

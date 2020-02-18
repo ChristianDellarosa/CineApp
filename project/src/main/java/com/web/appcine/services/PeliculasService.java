@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-@Service
+//@Service para que no tome 2 instancias
 public class PeliculasService implements IPeliculasService {
 
     private List<Pelicula> peliculas;
@@ -74,6 +74,11 @@ public class PeliculasService implements IPeliculasService {
         categorias.add("Clasificacion D");
 
         return categorias;
+    }
+
+    @Override
+    public void delete(int idPelicula) {
+
     }
 
 
