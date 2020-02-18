@@ -42,6 +42,8 @@
             <div class="col-sm-3">
                 <div class="form-group">
                     <form:hidden path="id"/>
+                    <form:hidden path="detalle.id"/>
+
                     <label for="titulo">T&iacute;tulo</label>
                     <form:input type="text" class="form-control" path="titulo" id="titulo" required="required" />
                 </div>

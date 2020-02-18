@@ -5,6 +5,9 @@
 <head>
     <spring:url value="/resources" var="resourcesPath"/>
     <spring:url value="/peliculas/create" var="create"/>
+    <spring:url value="/peliculas/edit" var="update"/>
+    <spring:url value="/peliculas/delete" var="delete"/>
+
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,6 +28,10 @@
 
     <c:if test="${msg!=null}">
         <div class="alert alert-success" role="alert"> ${msg}</div>
+    </c:if>
+
+    <c:if test="${msgDelete!=null}">
+        <div class="alert alert-success" role="alert"> ${msgDelete}</div>
     </c:if>
 
     <a href="${create}" class="btn btn-success" role="button" title="Nueva Pelicula" >Nueva Pelicula</a><br><br>
@@ -60,8 +67,8 @@
                             </c:choose>
                         </td>
                     <td>
-                    <a href="#" class="btn btn-success btn-sm" role="button" title="Edit" ><span class="glyphicon glyphicon-pencil"></span></a>
-                    <a href="#" class="btn btn-danger btn-sm" role="button" title="Eliminar" ><span class="glyphicon glyphicon-trash"></span></a>
+                    <a href="${update}/${pelicula.id}" class="btn btn-success btn-sm" role="button" title="Edit" ><span class="glyphicon glyphicon-pencil"></span></a>
+                    <a href="${delete}/${pelicula.id}" onclick='return confirm("Estas seguro?") ' class="btn btn-danger btn-sm" role="button" title="Eliminar" ><span class="glyphicon glyphicon-trash"></span></a>
                     </td>
             </tr>
                 </c:forEach>
