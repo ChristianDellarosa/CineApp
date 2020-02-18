@@ -2,6 +2,7 @@ package com.web.appcine.controller;
 
 import com.web.appcine.helpers.Utils;
 import com.web.appcine.model.Pelicula;
+import com.web.appcine.services.interfaces.IDetallePeliculaService;
 import com.web.appcine.services.interfaces.IPeliculasService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -25,10 +26,11 @@ public class PeliculaController {
     @Autowired
     private IPeliculasService peliculasService;
 
+    @Autowired
+    private IDetallePeliculaService detallePeliculaService;
+
     @GetMapping("/create")
-    public String create(@ModelAttribute("pelicula") Pelicula pelicula, Model model) {
-        model.addAttribute("generos",peliculasService.searchGenders());
-        model.addAttribute("categorias",peliculasService.searchCategories());
+    public String create(@ModelAttribute("pelicula") Pelicula pelicula) {
         return "peliculas/formPelicula";
     }
 
@@ -42,6 +44,8 @@ public class PeliculaController {
             String imageName = Utils.saveImage(multipartFile,request);
             pelicula.setImagen(imageName);
         }
+
+        detallePeliculaService.insert(pelicula.getDetalle());
         peliculasService.insert(pelicula);
         redirectAttributes.addFlashAttribute("msg","Pelicula guardada correctamente");
         return "redirect:/peliculas/index";
@@ -52,6 +56,33 @@ public class PeliculaController {
         List<Pelicula> peliculas = peliculasService.searchAll();
         model.addAttribute("peliculas",peliculas);
         return "peliculas/listPeliculas";
+    }
+
+    @GetMapping(value = "edit/{id}")
+    public String update(@PathVariable("id") int idPelicula, Model model) {
+        Pelicula pelicula = peliculasService.searchById(idPelicula);
+        model.addAttribute("pelicula",pelicula);
+        return "peliculas/formPelicula";
+    }
+
+    @GetMapping(value = "delete/{id}")
+    public String delete(@PathVariable("id") int idPelicula, RedirectAttributes redirectAttributes) {
+        Pelicula pelicula = peliculasService.searchById(idPelicula);
+
+        peliculasService.delete(idPelicula);
+        detallePeliculaService.delete(pelicula.getDetalle().getId());
+        redirectAttributes.addFlashAttribute("msgDelete","Pelicula eliminada correctamente");
+        return "redirect:/peliculas/index";
+    }
+
+    @ModelAttribute("generos") // Esta disponible para cualquier controlador dentro de esta clase con el nombre "generos"
+    public List<String> getGeneros(){
+        return peliculasService.searchGenders();
+    }
+
+    @ModelAttribute("categorias")
+    public List<String> getCategorias(){
+        return peliculasService.searchCategories();
     }
 
     @InitBinder
