@@ -31,9 +31,6 @@ public class HomeController {
 
     @GetMapping(value = "/detail/{id}")
     public String detallePelicula(@PathVariable("id") int idPelicula, @RequestParam("fecha") String fecha, Model model) {
-        System.out.println("IdPelicula: "+ idPelicula);
-        System.out.println("Fecha: "+ fecha);
-
         model.addAttribute("pelicula",peliculasService.searchById(idPelicula));
         return "detail";
     }
