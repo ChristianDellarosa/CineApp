@@ -53,7 +53,6 @@
             <td>${banner.titulo}</td>
             <td>${banner.fechaPublicacion}</td>
             <td>${banner.archivo}</td>
-            <td>${banner.status}</td>
             <td> <c:choose>
                 <c:when test="${banner.status eq 'Activo'}">
                     <span class="label label-success">Activo</span>
