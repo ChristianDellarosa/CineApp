@@ -1,7 +1,12 @@
 package com.web.appcine.model;
 
-public class DetallePelicula {
+import javax.persistence.*;
 
+@Entity
+@Table(name ="Detalles")
+public class DetallePelicula {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String director;
     private String actores;
