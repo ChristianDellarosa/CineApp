@@ -38,7 +38,6 @@ public class HomeController {
 
     @PostMapping(value = "/search")
     public String buscarFecha(@RequestParam("fecha") String fecha, Model model) {
-        System.out.println("Fecha: "+fecha);
         model.addAttribute("fechas", Utils.getNextDays(6));
         model.addAttribute("peliculas", peliculasService.searchAll());
         model.addAttribute("fechaBusqueda",fecha);
@@ -58,6 +57,11 @@ public class HomeController {
         model.addAttribute("fechaBusqueda",simpleDateFormat.format(date));
         model.addAttribute("pelicula",peliculasService.searchById(idPelicula));
         return "detail";
+    }
+
+    @GetMapping(value = "/about")
+    public String about() {
+        return "acerca";
     }
 }
 
