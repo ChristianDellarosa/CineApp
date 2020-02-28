@@ -6,6 +6,8 @@ import com.web.appcine.services.interfaces.IDetallePeliculaService;
 import com.web.appcine.services.interfaces.IPeliculasService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -73,6 +75,13 @@ public class PeliculaController {
         detallePeliculaService.delete(pelicula.getDetalle().getId());
         redirectAttributes.addFlashAttribute("msgDelete","Pelicula eliminada correctamente");
         return "redirect:/peliculas/index";
+    }
+
+    @GetMapping(value = "/indexPaginate")
+    public String mostrarIndexPaginado(Model model, Pageable page) {
+        Page<Pelicula> lista = peliculasService.searchAll(page);
+        model.addAttribute("peliculas", lista);
+        return "peliculas/listPeliculas";
     }
 
     @ModelAttribute("generos") // Esta disponible para cualquier controlador dentro de esta clase con el nombre "generos"

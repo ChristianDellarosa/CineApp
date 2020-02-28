@@ -7,7 +7,7 @@
     <spring:url value="/peliculas/create" var="create"/>
     <spring:url value="/peliculas/edit" var="update"/>
     <spring:url value="/peliculas/delete" var="delete"/>
-
+    <spring:url value="/peliculas/indexPaginate" var="paginate"/>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -38,7 +38,6 @@
 
     <div class="table-responsive">
         <table class="table table-hover table-striped table-bordered">
-            <thead>
             <tr>
                 <th>Titulo</th>
                 <th>Genero</th>
@@ -48,9 +47,7 @@
                 <th>Status</th>
                 <th>Opciones</th>
             </tr>
-            </thead>
-            <tbody>
-                <c:forEach var="pelicula" items="${peliculas}">
+                 <c:forEach var="pelicula" items="${peliculas.content}">
                  <tr>
                         <td>${pelicula.titulo}</td>
                         <td>${pelicula.genero}</td>
@@ -72,9 +69,14 @@
                     </td>
             </tr>
                 </c:forEach>
-        </tbody>
         </table>
     </div>
+    <nav aria-label="">
+        <ul class="pager">
+            <li><a href="${paginate}?page=${peliculas.number - 1 }">Anterior</a></li>
+            <li><a href="${paginate}?page=${peliculas.number + 1 }">Siguiente</a></li>
+        </ul>
+    </nav>
 
     <hr class="featurette-divider">
 
