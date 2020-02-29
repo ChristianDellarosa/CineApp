@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <spring:url value="/peliculas/indexPaginate" var="peliculasIndex"/>
 <spring:url value="/banners/index" var="bannersIndex"/>
+<spring:url value="/noticias/index" var="noticiasIndex"/>
 <spring:url value="/about" var="about"/>
 <spring:url value="/" var="root"/>
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -20,6 +21,7 @@
                 <li><a href="${about}">Acerca</a></li>
                 <li><a href="${peliculasIndex}?page=0">Peliculas</a></li>
                 <li><a href="${bannersIndex}">Banners</a></li>
+                <li><a href="${noticiasIndex}">Noticias</a></li>
                 <li><a href="#">Login</a></li>
             </ul>
         </div>
