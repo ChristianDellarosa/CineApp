@@ -1,8 +1,13 @@
 package com.web.appcine.model;
 
+import javax.persistence.*;
 import java.util.Date;
 
+@Entity
+@Table(name = "Banners")
 public class Banner {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String titulo;
     private Date fechaPublicacion;
@@ -10,8 +15,6 @@ public class Banner {
     private String status;
 
     public Banner() {
-        this.fechaPublicacion = new Date();
-        this.status = "Activo";
     }
 
     public Banner(int id, String titulo, Date fechaPublicacion, String archivo, String status) {

@@ -11,19 +11,12 @@ public class Noticia {
     private int id;
     /*No hace falta aplicar @Column ya que los campos se llaman igual en la base que en el modelo*/
     private String titulo;
-    @Temporal(TemporalType.DATE)
     private Date fecha;
     private String detalle;
     private String status;
 
-    public Noticia(String titulo, String detalle, String status) {
-        this.titulo = titulo;
-        this.detalle = detalle;
-        this.fecha = new Date();
-        this.status = status ;
-    }
-
     public Noticia() {
+        this.fecha = new Date();
     }
 
     public int getId() {
