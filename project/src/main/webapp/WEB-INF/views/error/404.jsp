@@ -23,7 +23,7 @@
             <h3 class="panel-title">Error 404.</h3>
         </div>
         <div class="panel-body">
-            <img src="${urlPublic}/images/error.png" width="48" height="48" class="center">
+            <img src="${resourcesPath}/images/error.png" width="48" height="48" class="center">
             <h4>La página solicitada no existe!</h4>
             <br>
             <button class="btn btn-success" onclick="goBack()">REGRESAR</button>

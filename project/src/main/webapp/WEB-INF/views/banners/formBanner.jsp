@@ -15,7 +15,7 @@
     <link href="${resourcesPath}/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="${resourcesPath}/bootstrap/css/theme.css" rel="stylesheet">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <spring:url value="/peliculas/save" var="urlForm"/>
+    <spring:url value="/banners/save" var="urlForm"/>
 </head>
 
 <body>

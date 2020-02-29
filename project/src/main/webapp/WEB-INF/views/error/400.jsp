@@ -8,10 +8,10 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<title>CineSite | Bienvenido</title>
-	<spring:url value="/resources" var="urlPublic" />
+		<spring:url value="/resources" var="resourcesPath"/>
 		
-	<link href="${urlPublic}/bootstrap/css/bootstrap.min.css" rel="stylesheet">	
-	<link href="${urlPublic}/bootstrap/css/theme.css" rel="stylesheet">
+	<link href="${resourcesPath}/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="${resourcesPath}/bootstrap/css/theme.css" rel="stylesheet">
 	
 	</head>
 
@@ -26,7 +26,7 @@
 				<h3 class="panel-title">Error 400.</h3>
 			</div>
 			<div class="panel-body">
-				<img src="${urlPublic}/images/error.png" width="48" height="48" class="center">
+				<img src="${resourcesPath}/images/error.png" width="48" height="48" class="center">
 				<h4> El requerimiento enviado por el cliente es sintácticamente incorrecto!</h4>				
 				<br>
 				<button class="btn btn-success" onclick="goBack()">REGRESAR</button>
@@ -41,7 +41,7 @@
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script src="${urlPublic}/bootstrap/js/bootstrap.min.js"></script>
+	<script src="${resourcesPath}/bootstrap/js/bootstrap.min.js"></script>
 		
 	<script>
 		function goBack() {
