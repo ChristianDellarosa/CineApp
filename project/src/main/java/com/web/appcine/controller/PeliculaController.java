@@ -46,11 +46,10 @@ public class PeliculaController {
             String imageName = Utils.saveImage(multipartFile,request);
             pelicula.setImagen(imageName);
         }
-
         detallePeliculaService.insert(pelicula.getDetalle());
         peliculasService.insert(pelicula);
         redirectAttributes.addFlashAttribute("msg","Pelicula guardada correctamente");
-        return "redirect:/peliculas/index";
+        return "redirect:/peliculas/indexPaginate";
     }
 
     @GetMapping("index")
@@ -70,11 +69,10 @@ public class PeliculaController {
     @GetMapping(value = "delete/{id}")
     public String delete(@PathVariable("id") int idPelicula, RedirectAttributes redirectAttributes) {
         Pelicula pelicula = peliculasService.searchById(idPelicula);
-
         peliculasService.delete(idPelicula);
         detallePeliculaService.delete(pelicula.getDetalle().getId());
         redirectAttributes.addFlashAttribute("msgDelete","Pelicula eliminada correctamente");
-        return "redirect:/peliculas/index";
+        return "redirect:/peliculas/indexPaginate";
     }
 
     @GetMapping(value = "/indexPaginate")
