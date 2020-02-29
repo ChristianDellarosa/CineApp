@@ -4,6 +4,7 @@ import com.web.appcine.model.Pelicula;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.Date;
 import java.util.List;
 
 public interface IPeliculasService {
@@ -14,4 +15,5 @@ public interface IPeliculasService {
     List<String> searchCategories();
     void delete(int idPelicula);
     Page<Pelicula> searchAll(Pageable page);
+    List<Pelicula> searchByDate(Date date);
 }

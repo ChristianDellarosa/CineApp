@@ -1,6 +1,8 @@
 package com.web.appcine.services;
 
+import com.web.appcine.model.Horario;
 import com.web.appcine.model.Pelicula;
+import com.web.appcine.repository.HorarioRepository;
 import com.web.appcine.repository.PeliculaRepository;
 import com.web.appcine.services.interfaces.IPeliculasService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,15 +10,16 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class PeliculasService implements IPeliculasService {
 
     @Autowired
     private PeliculaRepository peliculaRepository;
+    @Autowired
+    private HorarioRepository horariosRepository;
+
 
     @Override
     public List<Pelicula> searchAll() {
@@ -73,4 +76,15 @@ public class PeliculasService implements IPeliculasService {
     public Page<Pelicula> searchAll(Pageable page) {
         return peliculaRepository.findAll(page);
     }
+
+    @Override
+    public List<Pelicula> searchByDate(Date date) {
+        List<Pelicula> peliculas = new LinkedList<>();
+        List<Horario> horarios = horariosRepository.findByFecha(date);
+        for (Horario h : horarios) {
+            peliculas.add(h.getPelicula());
+        }
+        return peliculas;
+    }
+
 }
