@@ -7,8 +7,10 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class AppCreate {
 
     public static void main(String[] args){
-        Noticia noticia = new Noticia("Noti","detalleNoticia1","Activa");
-
+        Noticia noticia = new Noticia();
+        noticia.setStatus("Activa");
+        noticia.setDetalle("pepe");
+        noticia.setTitulo("hola");
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("WEB-INF/spring/root-context.xml");
         NoticiaRepository repo = context.getBean("noticiaRepository", NoticiaRepository.class);
         repo.save(noticia);

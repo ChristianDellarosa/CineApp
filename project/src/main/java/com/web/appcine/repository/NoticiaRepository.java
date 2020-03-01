@@ -15,5 +15,6 @@ public interface NoticiaRepository extends JpaRepository<Noticia,Integer> {
     List<Noticia> findByStatusAndFecha(String status, Date date);
     List<Noticia> findByStatusOrFecha(String status, Date date);
     List<Noticia> findByFechaBetween(Date initial, Date finaly);
+    List<Noticia> findTop3ByStatusOrderByIdDesc(String status);
 
 }

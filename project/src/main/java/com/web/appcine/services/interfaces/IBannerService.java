@@ -8,4 +8,7 @@ public interface IBannerService {
 
     void insert (Banner banner);
     List<Banner> searchAll();
+    List<Banner> searchActives();
+    void delete(int idBanner);
+    Banner searchById(int idBanner);
 }

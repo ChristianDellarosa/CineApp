@@ -5,6 +5,7 @@
 <head>
     <spring:url value="/resources" var="resourcesPath"/>
     <spring:url value="/" var="urlRoot"/>
+    <spring:url value="/noticias/save" var="urlForm"/>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,7 +26,18 @@
 
     <h3 class="blog-title"><span class="label label-success">Datos de la Noticia</span></h3>
 
-    <form action="/noticias/save" method="post">
+    <spring:hasBindErrors name="noticia">
+        <div class='alert alert-danger' role='alert'>
+            Por favor corrija los siguientes errores:
+            <ul>
+                <c:forEach var="error" items="${errors.allErrors}">
+                    <li><spring:message message="${error}" /></li>
+                </c:forEach>
+            </ul>
+        </div>
+    </spring:hasBindErrors>
+
+    <form action="${urlForm}" method="post" modelAttribute="noticia">
         <div class="row">
             <div class="col-sm-6">
                 <div class="form-group">

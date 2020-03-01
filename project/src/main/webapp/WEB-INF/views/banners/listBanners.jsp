@@ -7,6 +7,8 @@
 
     <spring:url value="/resources" var="resourcesPath"/>
     <spring:url value="/banners/create" var="create"/>
+    <spring:url value="/banners/edit" var="update"/>
+    <spring:url value="/banners/delete" var="delete"/>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -31,6 +33,10 @@
         <div class="alert alert-success" role="alert"> ${msg}</div>
     </c:if>
 
+    <c:if test="${msgDelete!=null}">
+        <div class="alert alert-success" role="alert"> ${msgDelete}</div>
+    </c:if>
+
     <a href="${create}" class="btn btn-success" role="button" title="Nuevo Banner" >Nuevo</a><br><br>
 
     <div class="table-responsive">
@@ -44,14 +50,15 @@
                 <th>Opciones</th>
             </tr>
             <tr>
-
+        <c:if test="${banners == null}">
+            <div class="alert alert-success" role="alert">No hay banners</div>
+        </c:if>
         <c:forEach var="banner" items="${banners}">
         <tr>
             <td>${banner.id}</td>
             <td>${banner.titulo}</td>
-            <td>${banner.fechaPublicacion}</td>
+            <td>${banner.fecha}</td>
             <td>${banner.archivo}</td>
-            <td>${banner.status}</td>
             <td> <c:choose>
                 <c:when test="${banner.status eq 'Activo'}">
                     <span class="label label-success">Activo</span>
@@ -62,8 +69,8 @@
                 </c:choose>
             </td>
             <td>
-                 <a href="#" class="btn btn-success btn-sm" role="button" title="Edit" ><span class="glyphicon glyphicon-pencil"></span></a>
-                 <a href="#" class="btn btn-danger btn-sm" role="button" title="Eliminar" ><span class="glyphicon glyphicon-trash"></span></a>
+                 <a href="${update}/${banner.id}" class="btn btn-success btn-sm" role="button" title="Edit" ><span class="glyphicon glyphicon-pencil"></span></a>
+                 <a href="${delete}/${banner.id}" onclick='return confirm("¿Estas seguro?")' class="btn btn-danger btn-sm" role="button" title="Eliminar"><span class="glyphicon glyphicon-trash"></span></a>
             </td>
         </tr>
         </c:forEach>
@@ -71,11 +78,7 @@
     </div>
     <hr class="featurette-divider">
 
-    <!-- FOOTER -->
-    <footer>
-        <p class="pull-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2017 My CineSite, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-    </footer>
+    <jsp:include page="../includes/footer.jsp"></jsp:include>
 
 </div> <!-- /container -->
 

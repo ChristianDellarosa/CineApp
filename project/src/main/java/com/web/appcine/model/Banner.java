@@ -1,25 +1,21 @@
 package com.web.appcine.model;
 
+import javax.persistence.*;
 import java.util.Date;
 
+@Entity
+@Table(name = "Banners")
 public class Banner {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String titulo;
-    private Date fechaPublicacion;
+    private Date fecha;
     private String archivo;
     private String status;
 
     public Banner() {
-        this.fechaPublicacion = new Date();
-        this.status = "Activo";
-    }
-
-    public Banner(int id, String titulo, Date fechaPublicacion, String archivo, String status) {
-        this.id = id;
-        this.titulo = titulo;
-        this.fechaPublicacion = fechaPublicacion;
-        this.archivo = archivo;
-        this.status = status;
+        this.fecha = new Date();
     }
 
     public int getId() {
@@ -38,12 +34,12 @@ public class Banner {
         this.titulo = titulo;
     }
 
-    public Date getFechaPublicacion() {
-        return fechaPublicacion;
+    public Date getFecha() {
+        return fecha;
     }
 
-    public void setFechaPublicacion(Date fechaPublicacion) {
-        this.fechaPublicacion = fechaPublicacion;
+    public void setFecha(Date fechaPublicacion) {
+        this.fecha = fechaPublicacion;
     }
 
     public String getArchivo() {
@@ -67,7 +63,7 @@ public class Banner {
         return "Carrusel{" +
                 "id=" + id +
                 ", titulo='" + titulo + '\'' +
-                ", fechaPublicacion=" + fechaPublicacion +
+                ", fechaPublicacion=" + fecha +
                 ", archivo='" + archivo + '\'' +
                 ", status='" + status + '\'' +
                 '}';

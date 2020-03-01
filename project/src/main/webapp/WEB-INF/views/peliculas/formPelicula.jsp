@@ -42,6 +42,8 @@
             <div class="col-sm-3">
                 <div class="form-group">
                     <form:hidden path="id"/>
+                    <form:hidden path="detalle.id"/>
+
                     <label for="titulo">T&iacute;tulo</label>
                     <form:input type="text" class="form-control" path="titulo" id="titulo" required="required" />
                 </div>
@@ -121,7 +123,7 @@
           <div class="col-sm-6">
             <div class="form-group">
               <label for="sinopsis">Sinopsis</label>
-              <form:textarea class="form-control" rows="5" path="detalle.sinopsis" id="sinopsis"></form:textarea>
+              <form:textarea class="form-control" rows="5" path="detalle.sinopsis" id="sinopsis"/>
             </div>
           </div>
         </div>

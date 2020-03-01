@@ -28,17 +28,6 @@ public class Pelicula {
     public Pelicula() {
     }
 
-    public Pelicula(int id, String titulo, int duracion, String clasificacion, String genero, Date fechaEstreno, String imagen,String status) {
-        this.id = id;
-        this.titulo = titulo;
-        this.duracion = duracion;
-        this.clasificacion = clasificacion;
-        this.genero = genero;
-        this.fechaEstreno = fechaEstreno;
-        this.imagen = imagen;
-        this.status = status;
-    }
-
     public int getId() {
         return id;
     }
