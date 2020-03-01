@@ -4,16 +4,17 @@ import com.web.appcine.helpers.Utils;
 import com.web.appcine.model.Banner;
 import com.web.appcine.services.interfaces.IBannerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpServletRequest;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -49,7 +50,7 @@ public class BannerController {
          * @return
          */
         @PostMapping("/save")
-        public String save(@RequestParam("archivo") MultipartFile multipartFile, HttpServletRequest request, Banner banner, BindingResult result, RedirectAttributes redirectAttributes ) {
+        public String save(@ModelAttribute("banner") Banner banner, BindingResult result, RedirectAttributes redirectAttributes, @RequestParam("imageFile") MultipartFile multipartFile, HttpServletRequest request) {
             if(result.hasErrors()) {
                 System.out.println("Existieron Errores");
                 return "banners/formBanner";
@@ -62,5 +63,25 @@ public class BannerController {
             redirectAttributes.addFlashAttribute("msg","Banner guardado correctamente");
             return "redirect:/banners/index";
         }
+
+        @GetMapping(value = "/edit/{id}")
+        public String update(@PathVariable("id") int idBanner, Model model) {
+            Banner banner = bannerService.searchById(idBanner);
+            model.addAttribute("banner", banner);
+            return "banners/formBanner";
+        }
+
+        @GetMapping(value = "/delete/{id}")
+        public String delete(@PathVariable("id") int idBanner, RedirectAttributes attributes) {
+            bannerService.delete(idBanner);
+            attributes.addFlashAttribute("msgDelete", "Banner eliminado correctamente.");
+            return "redirect:/banners/index";
+        }
+
+    @InitBinder
+    public void initBinder(WebDataBinder binder) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
+    }
     }
 
