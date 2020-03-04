@@ -72,6 +72,11 @@ public class HomeController {
         return "acerca";
     }
 
+    @GetMapping(value = "/formLogin" )
+    public String viewLogin() {
+        return "formLogin";
+    }
+
     @ModelAttribute("noticias")
     public List<Noticia> getNoticias(){
         return noticiasService.searchLast();
